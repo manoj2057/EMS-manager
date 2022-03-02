@@ -61,7 +61,7 @@
 
                 $_SESSION['login'] = "<div class='success'> LOGIN succesffuly</div>";
                 $_SESSION['user'] = $username;
-                header('location:index.php');
+                header('location:dashboard/index.php');
             } else {
 
                 $_SESSION['login'] = "<div class='error'> LOGIN Failed</div>";

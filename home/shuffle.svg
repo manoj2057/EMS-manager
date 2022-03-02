@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="57px" height="54px" viewBox="0 0 57 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>24FCB1AC-CECF-4F44-998B-8E7BF6FA2E12</title>
+    <g id="Homepage---Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Home---Large-Desktop-Copy" transform="translate(-354.000000, -767.000000)" stroke="#000000" stroke-width="4">
+            <g id="Group-15" transform="translate(320.000000, 705.000000)">
+                <g id="shufffle" transform="translate(36.000000, 64.000000)">
+                    <polyline id="Path" points="44.1666667 32.3529412 53 41.1764706 44.1666667 50"></polyline>
+                    <path d="M0,10.2941155 L7.36111111,10.2941155 C11.7777778,10.2941155 14.7222222,11.7647059 17.6666667,16.1764706 C23.5555556,25.9803922 27.4814815,32.3529405 29.4444444,35.2941155 C32.3888889,39.7058824 36.8253521,41.1764685 39.75,41.1764685 C42.7966465,41.1764685 47.2133132,41.1764685 53,41.1764685" id="Path"></path>
+                    <path d="M0,35.2941155 L7.36111111,35.2941155 C11.7777778,35.2941155 14.7222222,36.7647059 17.6666667,41.1764685" id="Path" transform="translate(8.833333, 38.235292) scale(1, -1) translate(-8.833333, -38.235292) "></path>
+                    <polyline id="Path" points="44.1666667 -1.02858898e-14 53 8.82352941 44.1666667 17.6470588"></polyline>
+                    <path d="M29.4444444,8.82352941 C32.3888889,13.2352962 36.8253521,14.7058824 39.75,14.7058824 C42.7966465,14.7058824 47.2133132,14.7058824 53,14.7058824" id="Path" transform="translate(41.222222, 11.764706) scale(1, -1) translate(-41.222222, -11.764706) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

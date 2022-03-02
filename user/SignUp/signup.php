@@ -13,7 +13,7 @@
     <a href="../../index.html">Home</a>
     <div class="container">
 
-        <form action="" class="signUp" method="POST">
+        <form action="#" class="signUp" method="POST">
             <h1 class="mainHeading">SignUp</h1>
             <p>Required field are followed by *</p>
             <p>
@@ -66,7 +66,7 @@
         </form>
     </div>
 </body>
-<?php include('../../php/connection.php'); ?>
+<?php include('../php/connection.php'); ?>
 <?php
 if (isset($_POST['submit'])) {
     $firstname = $_POST['firstname'];

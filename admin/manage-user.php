@@ -7,7 +7,9 @@
         <br>
         <h1 style="text-align: center;">Manage Users</h1>
         <br>
-        <!-- Button to Add Admin -->
+        <!-- Button to Add user -->
+        <a href="add-admin.php" class="btn-primary">Add Admin</a>
+    <br><br>
 
         <br><br>
 

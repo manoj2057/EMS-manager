@@ -2,47 +2,64 @@
 include('../admin/config.php');
 include('login-check.php');
 ?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <title>Admin Dashboard</title>
     <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            margin-left: 10%;
-            width: 300px;
-
+        /* Add some padding on document's body to prevent the content
+    to go underneath the header and footer */
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
         }
 
-        li {
-            float: left;
-            text-align: center;
-            background-color: red;
-
-        }
-
-        li a {
-            display: block;
-            padding: 8px;
-            background-color: red;
+        .fixed-header,
+        .fixed-footer {
             width: 100%;
-            margin-left: auto;
-            font: 20px sans-serif;
+            position: fixed;
+            background: #333;
+            padding: 10px 0;
+            color: #fff;
+        }
+
+        .fixed-header {
+            top: 0;
+        }
+
+        .fixed-footer {
+            bottom: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            /* Center the DIV horizontally */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 7px 25px;
+            display: inline-block;
         }
     </style>
 </head>
 
 <body>
-
-    <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="manage-admin.php">Admin</a></li>
-        <li><a href="manage-user.php">User</a></li>
-        <li><a href="slider_view.php">Sliders</a></li>
-    </ul>
+    <div class="fixed-header">
+        <div class="container">
+            <nav>
+                <a href="index.php">Home</a>
+                <a href="manage-admin.php">Admin</a>
+                <a href="manage-user.php">User</a></li>
+                <a href="slider_view.php">Sliders</a></li>
+            </nav>
+        </div>
+    </div>
 
 </body>
 

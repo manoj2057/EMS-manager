@@ -1,7 +1,7 @@
 <!-- Main Content Section Starts -->
 <div class="main-content">
      <div class="wrapper">
-          <h1>Dashboard</h1>
+          <h1 style="text-align: center;">Dashboard</h1>
           <?php
           include('partials/menu.php');
           //   session_start();
