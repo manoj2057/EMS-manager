@@ -44,29 +44,10 @@ $nameErr = $password = "";
 $full_name = $username = $password= "";
 
     if(isset($_POST['submit'])){
-
-        if (empty($_POST["full_name"])) {
-            $nameErr = "fullName is required";
-          } else {
-            $full_name=$_POST['full_name'];
-            // check if name only contains letters and whitespace
-            if (!preg_match("/^[a-zA-Z-' ]*$/",$full_name)) {
-              $nameErr = "Only letters and white space allowed";
-            }
-          }
-        
-          if (empty($_POST["username"])) {
-            $nameErr = "userName is required";
-          } else {
-            $username=$_POST['username'];
-            if ($_POST["username"]==$username) {
-                $nameErr = "username exist";
-              }
-            }
-          
-        
-        
-        $password=$_POST['password'];
+     $full_name=$_POST['full_name']);
+     $username=$_POST['username']);     
+     $password=$_POST['password']);
+     $full_name = $username = $password= ""
 
 
     

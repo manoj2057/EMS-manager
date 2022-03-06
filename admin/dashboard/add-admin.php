@@ -194,40 +194,40 @@ $errors = array();
     if(isset($_POST['submit'])){
 
       
-        $full_name=$_POST['full_name'];
-        $username=$_POST['username'];
-        $password=$_POST['password'];
+        $full_name=mysqli_real_escape_string($conn,$_POST['full_name']);
+        $username=mysqli_real_escape_string($conn,$_POST['username']);
+        $password=mysqli_real_escape_string($conn,$_POST['password']);
         $nameErr=$passwordErr="";
-        $sql = "SELECT * FROM users WHERE full_name='$full_name' OR username='$username' LIMIT 1";
+        $sql = "SELECT * FROM tbl_admin  WHERE full_name='$full_name' OR password='$password' LIMIT 1";
         $result = mysqli_query($conn, $sql);
         $user = mysqli_fetch_assoc($result);
 
         if($full_name==""){
-          echo"<alert>fullname cant be empty</alert>";
-        }
-      
-        
-        if ($user) { // if user exists
-          if ($user['ful_name'] === $full_name) {
-            array_push($errors, "full_name already exists");
+          $nameErr="fullname cant be empty";
           }
-        }
-
-          if($username==""){
-            echo"<alert>username cant be empty</alert>";
+          else if (!preg_match("/^[a-zA-Z-' ]*$/",$full_name)) {
+              $nameErr = "Only letters and white space allowed";
           }
-        
-        
-          
-          if ($user) { // if user exists
-            if ($user['username'] === $username) {
-              array_push($errors, "user_name already exists");
+          else if ($user['full_name'] === $full_name) {
+            array_push($errors, "fullname already exists");
+          }
+         else if($username==""){
+            $nameErr="username cant be empty";
             }
-          }
+           else if ($user['username'] === $username) {
+              array_push($errors, "Username already exists");
+            }
+          
+          else if($password==""){
+            $passwordErr= "Password cant be empty";
+        }
+        else if(strlen($password)<6){
+            $passwordErr= "Password must be greater  than 6 digits";
+        }
 
 
-            else{
-        // SQl
+
+    else{
         $sql="insert into tbl_admin values('','$full_name','$username','$password')";
         if (mysqli_query($conn, $sql)) {
           echo "<script>alert('Update Sucessfully'); window.location='manage-admin.php'</script>";
@@ -240,6 +240,7 @@ $errors = array();
 
   }
 }
+
        
     
           

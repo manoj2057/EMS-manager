@@ -68,37 +68,65 @@
 </body>
 <?php include('../php/connection.php'); ?>
 <?php
+$errors = array(); 
 if (isset($_POST['submit'])) {
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $gender = $_POST['gender'];
-    $address = $_POST['address'];
-    $pincode = $_POST['pincode'];
-    $card_type = $_POST['card_type'];
-    $card_number = $_POST['card_number'];
-    $exp_date = $_POST['exp_date'];
-    $cvv = $_POST['cvv'];
+    $firstname =mysqli_real_escape_string($conn, $_POST['firstname']);
+    $lastname = mysqli_real_escape_string($conn,$_POST['lastname']);
+    $email =mysqli_real_escape_string($conn, $_POST['email']);
+    $password =mysqli_real_escape_string($conn, $_POST['password']);
+    $gender =mysqli_real_escape_string($conn,$_POST['gender']);
+    $address =mysqli_real_escape_string($conn,$_POST['address']);
+    $pincode =mysqli_real_escape_string($conn,$_POST['pincode']);
+    $card_type =mysqli_real_escape_string($conn, $_POST['card_type']);
+    $card_number = mysqli_real_escape_string($conn,$_POST['card_number']);
+    $exp_date = mysqli_real_escape_string($conn,$_POST['exp_date']);
+    $cvv = mysqli_real_escape_string($conn,$_POST['cvv']);
+    $nameErr=$emailErr=$phoneErr=$addressErr=$passwordErr="";
 
-    if (isset($_POST['email'])) {
+    $sql = "SELECT * FROM signup WHERE email='$email' OR password='$password' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    $user = mysqli_fetch_assoc($result);
 
-        $check_email = mysqli_query($conn, "SELECT `email` FROM `signup` WHERE email = '$email'");
-        if (mysqli_num_rows($check_email) > 0) {
-            $error_message = "This Email Address is already registered. Please Try another.";
-            echo ($error_message);
-        } else {
-            // IF EMAIL IS NOT REGISTERED
-            /* -- 
-            
-            ENCRYPT USER PASSWORD USING PHP password_hash function 
-            LEARN ABOUT PHP password_hash - http://php.net/manual/en/function.password-hash.php
-            
-            -- */
+    if($firstname==""){
+        $nameErr="firstname cant be empty";
+        }
+            if ($user['email'] === $email) {
+                $emailErr= "Email already exists";
+            }
+        
+        else if (!preg_match("/^[a-zA-Z-' ]*$/",$firstname)) {
+            $nameErr = "Only letters and white space allowed";
+        }
+        else if (!preg_match("/^[a-zA-Z-' ]*$/",$laststname)) {
+            $nameErr = "Only letters and white space allowed";
+        }
+        else if($gender==""){
+            $nameErr= "gender cant be empty";
+            }
 
-            $user_hash_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      else if($email==""){
+        $emailErr= "Email cant be empty";
+        }
+        else if(!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/', $email)){
+            $emailErr= "Email must be in valid format";
+        }
+    
+        else if($address==""){
+            $addressErr= "Address cant be empty";
+        }
+        else if($password==""){
+            $passwordErr= "Password cant be empty";
+        }
+        else if(strlen($password)<6){
+            $passwordErr= "Password must be greater  than 6 digits";
+        }
+        
+     
+    
+      // Finally, register user if there are no errors in the form
+    else {
 
-
+    
 
 
             $sql = "insert into signup values('','$firstname','$lastname','$email','$password','$gender','$address','$pincode','$card_type','$card_number','$exp_date','$cvv')";
@@ -111,7 +139,7 @@ if (isset($_POST['submit'])) {
 
             mysqli_close($conn);
         }
+    
     }
-}
 
 ?>
