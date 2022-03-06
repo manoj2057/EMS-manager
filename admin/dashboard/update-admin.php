@@ -202,8 +202,8 @@ if (isset($_POST['submit'])) {
 
     $sql = "update tbl_admin set full_name='$full_name', username='$username' where id='$id'";
     if (mysqli_query($conn, $sql)) {
-      echo "admin update successfully";
-      header('location:/dashboard/manage-employee.php');
+      echo "<script>alert('Update Sucessfully'); window.location='manage-admin.php'</script>";
+    
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }

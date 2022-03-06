@@ -7,11 +7,13 @@
                   </li>
                   <li><a href="manage-employee.php"><i class="fa fa-clone"></i> Employee Information </span></a>
                   </li>
-                  <li><a href=""><i class="fa fa-desktop"></i> Task assign </span></a>
+                  <li><a href="assign.php"><i class="fa fa-desktop"></i> Task assign </span></a>
                   </li>
                   <li><a href="manage-leave.php"><i class="fa fa-edit"></i> Leave Management </span></a>
                   </li>
-                  <li><a href=""><i class="fa fa-bar-chart-o"></i> Progress Report </span></a>
+                  <li><a href="manage-project.php"><i class="fa fa-bar-chart-o"></i> Progress Report </span></a>
+                  </li>
+                  <li><a href="manage-attendence.php"><i class="fa fa-calendar-check-o"></i>User Attendence </span></a>
                   </li>
                   
                   

@@ -79,16 +79,16 @@
          <table class="tbl-30">
          <tr>
                 <td>Full Name:</td>
-                <td><input type="text" name="full_name"></td>
+                <td><input type="text" name="full_name" value=""  ></td>
             </tr> 
             <tr>
                 <td>Username:</td>
-                <td><input type="text" name="username"></td>
+                <td><input type="text" name="username"  value=""  required></td>
             </tr> 
             
             <tr>
                 <td>Password :</td>
-                <td><input type="password" name="password"></td>
+                <td><input type="password" name="password"  value="" required></td>
             </tr> 
 
             <tr>
@@ -185,32 +185,64 @@
 
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.min.js"></script>
-
+   
 
     <?php
-
-
+// initializing variables
+$errors = array(); 
 
     if(isset($_POST['submit'])){
+
+      
         $full_name=$_POST['full_name'];
         $username=$_POST['username'];
         $password=$_POST['password'];
+        $nameErr=$passwordErr="";
+        $sql = "SELECT * FROM users WHERE full_name='$full_name' OR username='$username' LIMIT 1";
+        $result = mysqli_query($conn, $sql);
+        $user = mysqli_fetch_assoc($result);
+
+        if($full_name==""){
+          echo"<alert>fullname cant be empty</alert>";
+        }
+      
+        
+        if ($user) { // if user exists
+          if ($user['ful_name'] === $full_name) {
+            array_push($errors, "full_name already exists");
+          }
+        }
+
+          if($username==""){
+            echo"<alert>username cant be empty</alert>";
+          }
+        
+        
+          
+          if ($user) { // if user exists
+            if ($user['username'] === $username) {
+              array_push($errors, "user_name already exists");
+            }
+          }
 
 
-    
+            else{
         // SQl
         $sql="insert into tbl_admin values('','$full_name','$username','$password')";
         if (mysqli_query($conn, $sql)) {
-            echo "New record created successfully";
-            header('location:manage-admin.php');
+          echo "<script>alert('Update Sucessfully'); window.location='manage-admin.php'</script>";
 
-          } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-          }
+        } else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+        
+        mysqli_close($conn);
+
+  }
+}
+       
+    
           
-          mysqli_close($conn);
-
-    }
 ?>
 	
   </body>

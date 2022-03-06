@@ -11,7 +11,7 @@
 
 <body>
 
-    <a href="../index.html">Home</a>
+    <a href="index.php">Home</a>
     <div class="container">
         <form action="elogin.php" class="login" method="POST">
             <h1 class="mainHeading">Login Page</h1>

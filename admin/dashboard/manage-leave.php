@@ -89,7 +89,7 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <a href="add-admin.php" class="btn-primary" style="align:centre;">Add Admin</a>
+                  
               <br><br>
                   <div class="x_content">
                       <div class="row">
@@ -101,7 +101,9 @@
                         <tr>
                         <th>S.N</th>
                         <th>Full Name</th>
-                        <th>Time</th>
+                        <th>start date</th>
+                        <th>end date</th>
+                        <th>reason</th>
                         <th>Actions</th>
                         </tr>
                       </thead>
@@ -110,7 +112,7 @@
                       <tbody>
                       <?php
 
-                        $sql = "SELECT * FROM tbl_admin";
+                        $sql = "SELECT * FROM leaves";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
@@ -119,12 +121,14 @@
                         ?>
                             <tr style="text-align: center;">
                             <td><?php echo $row['id']; ?></td>
-                            <td><?php echo  $row['full_name']; ?></td>
-                            <td><?php echo $row['username']; ?></td>
+                            <td><?php echo  $row['name']; ?></td>
+                            <td><?php echo $row['start_date']; ?></td>
+                            <td><?php echo $row['end_date']; ?></td>
+                            <td><?php echo $row['reason']; ?></td>
                             <td>
-                                <a href="update-password.php?id=<?php echo $row['id']; ?>" class="btn-primary">Change Password</a>
-                                <a href="update-admin.php?id=<?php echo $row['id']; ?>" class="btn-secondary">Update Admin</a>
-                                <a href="delete-admin.php?id=<?php echo $row['id']; ?>" class="btn-danger">Delete Admin</a>
+                                <a href="accept.php" class="btn-primary">accept</a>
+                                <a href="reject.php" class="btn-secondary">Reject</a>
+                               
                             </td>
                             </tr>
                         <?php

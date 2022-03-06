@@ -209,7 +209,8 @@ if (isset($_POST['submit'])) {
     $num = mysqli_fetch_array($sql);
     if ($num > 0) {
         $sql1 = mysqli_query($conn, "update tbl_admin set password='$new_password' where id='$id'");
-        header('location:/manage-admin.php');
+        echo "<script>alert('Update Sucessfully'); window.location='manage-admin.php'</script>";
+        
     } else {
 
 

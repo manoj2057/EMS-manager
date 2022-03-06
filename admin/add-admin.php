@@ -9,15 +9,18 @@ include('config.php');  ?>
          <tr>
                 <td>Full Name:</td>
                 <td><input type="text" name="full_name"></td>
+                <span class="text-danger">*<?php echo $nameErr;?></span>
             </tr> 
             <tr>
                 <td>Username:</td>
                 <td><input type="text" name="username"></td>
+                <span class="text-danger">*<?php echo $nameErr;?></span>
             </tr> 
             
             <tr>
                 <td>Password :</td>
                 <td><input type="password" name="password"></td>
+                <span class="text-danger">*<?php echo $passwordErr;?></span>
             </tr> 
 
             <tr>
@@ -32,15 +35,37 @@ include('config.php');  ?>
 
   <!-- Footer Selection Starts -->
   <?php include('partials/footer.php');  ?>
+  
 
 
   <?php
 
-
+$nameErr = $password = "";
+$full_name = $username = $password= "";
 
     if(isset($_POST['submit'])){
-        $full_name=$_POST['full_name'];
-        $username=$_POST['username'];
+
+        if (empty($_POST["full_name"])) {
+            $nameErr = "fullName is required";
+          } else {
+            $full_name=$_POST['full_name'];
+            // check if name only contains letters and whitespace
+            if (!preg_match("/^[a-zA-Z-' ]*$/",$full_name)) {
+              $nameErr = "Only letters and white space allowed";
+            }
+          }
+        
+          if (empty($_POST["username"])) {
+            $nameErr = "userName is required";
+          } else {
+            $username=$_POST['username'];
+            if ($_POST["username"]==$username) {
+                $nameErr = "username exist";
+              }
+            }
+          
+        
+        
         $password=$_POST['password'];
 
 
